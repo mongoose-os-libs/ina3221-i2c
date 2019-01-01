@@ -167,3 +167,8 @@ bool mgos_ina3221_get_shunt_resistance(struct mgos_ina3221 *sensor, uint8_t chan
   *ohms = sensor->shunt_resistance[chan];
   return true;
 }
+
+// Mongoose OS library initialization
+bool mgos_ina3221_i2c_init(void) {
+  return true;
+}

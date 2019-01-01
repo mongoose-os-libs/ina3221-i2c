@@ -75,7 +75,7 @@ struct mgos_ina3221 {
   float            shunt_resistance[3];
 };
 
-/* Mongoose OS intiializer */
+/* Mongoose OS initializer */
 bool mgos_ina3221_i2c_init(void);
 
 #ifdef __cplusplus
