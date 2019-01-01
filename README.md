@@ -6,8 +6,9 @@ A Mongoose library for Texas Instruments' 3-channel current sensor.
 
 The `INA3221` is a simple I2C device that measures current through shunt
 resistors on three separate channels. It is able to measure the voltage
-on each channel (max 26V) and the voltage drop over the shunt resistor
-in 40uV increments with a range of 163.8mV, and is quite precise.
+on each channel (max 26V, in 8mV increments) and the voltage drop over the
+shunt resistor in 40uV increments with a range of 163.8mV, and is quite
+precise.
 
 Using a 0.1Ohm shunt resistor, the maximum current that can be measured
 is 1.638A. Each channel can be enabled/disabled and polled individually.
