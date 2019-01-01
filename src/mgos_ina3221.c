@@ -156,7 +156,7 @@ bool mgos_ina3221_set_shunt_resistance(struct mgos_ina3221 *sensor, uint8_t chan
   if (!sensor || chan == 0 || chan > 3) {
     return false;
   }
-  sensor->shunt_resistance[chan] = ohms;
+  sensor->shunt_resistance[chan - 1] = ohms;
   return true;
 }
 
@@ -164,7 +164,7 @@ bool mgos_ina3221_get_shunt_resistance(struct mgos_ina3221 *sensor, uint8_t chan
   if (!sensor || !ohms || chan == 0 || chan > 3) {
     return false;
   }
-  *ohms = sensor->shunt_resistance[chan];
+  *ohms = sensor->shunt_resistance[chan - 1];
   return true;
 }
 
