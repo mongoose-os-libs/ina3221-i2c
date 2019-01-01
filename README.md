@@ -43,7 +43,7 @@ static void ina3221_timer_cb(void *user_data) {
     mgos_ina3221_get_shunt_voltage(sensor, i, &shunt);
     mgos_ina3221_get_current(sensor, i, &current);
     LOG(LL_INFO, ("Chan[%u]: Vbus=%.3f V Vshunt=%.0f uV Rshunt=%.3f Ohm Ishunt=%.1f mA",
-      i, bus, shunt*10e6, res, current*10e3));
+      i, bus, shunt*1e6, res, current*1e3));
   }
 }
 

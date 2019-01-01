@@ -118,7 +118,7 @@ bool mgos_ina3221_get_bus_voltage(struct mgos_ina3221 *sensor, uint8_t chan, flo
   }
   // LOG(LL_DEBUG, ("bus[%u] = %d", chan, val));
   *volts  = val / 8;    // first 3 bits are not used
-  *volts *= 0.008f;     // 8mV per LSB
+  *volts *= 8.f / 1e3;  // 8mV per LSB
   return true;
 }
 
@@ -134,7 +134,7 @@ bool mgos_ina3221_get_shunt_voltage(struct mgos_ina3221 *sensor, uint8_t chan, f
   }
   // LOG(LL_DEBUG, ("shunt[%u] = %d", chan, val));
   *volts  = val / 8;    // first 3 bits are not used
-  *volts *= 40 / 10e6;  // 40uV per LSB
+  *volts *= 40.f / 1e6; // 40uV per LSB
   return true;
 }
 
@@ -147,7 +147,7 @@ bool mgos_ina3221_get_current(struct mgos_ina3221 *sensor, uint8_t chan, float *
   if (!mgos_ina3221_get_shunt_voltage(sensor, chan, &shunt_volts)) {
     return false;
   }
-  *ampere = shunt_volts / sensor->shunt_resistance[chan-1];
+  *ampere = shunt_volts / sensor->shunt_resistance[chan - 1];
   // LOG(LL_DEBUG, ("Rshunt[%u]=%.2fOhms, Vshunt[%u]=%.3fV, Ishunt[%u]=%.3fA", chan, sensor->shunt_resistance[chan], chan, shunt_volts, chan, *ampere));
   return false;
 }
